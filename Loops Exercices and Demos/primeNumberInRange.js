@@ -1,6 +1,13 @@
-function solve(){
-    
+function solve(range){
+    const start = +range[0];
+    const end = +range[1];
 
+    for (let i = start; i <= end; i++) {
+      if(isPrime(i)){
+        console.log(i);
+      }
+    }
+    
     function isPrime(number){
         let maxDivider = Math.sqrt(number);
         for (let divider = 2; divider <= maxDivider; divider++) {
@@ -11,3 +18,4 @@ function solve(){
         return true;
     }
 }
+solve([2,11]);

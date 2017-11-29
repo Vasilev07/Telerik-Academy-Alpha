@@ -1,6 +1,4 @@
-function solve(number){
-    return isPrime(number);
-
+function solve(n){
     function isPrime(number){
         let maxDivider = Math.sqrt(number);
         for (let divider = 2; divider <= maxDivider; divider++) {
@@ -10,5 +8,15 @@ function solve(number){
         }
         return true;
     }
+
+    while(true){
+        if(isPrime(n)){
+            console.log(n);
+            break;
+        }
+        n--;
+    }
 }
-console.log(solve(7));
+solve(14);
+solve(13);
+solve(1048576);
