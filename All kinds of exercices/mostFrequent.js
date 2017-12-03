@@ -1,8 +1,7 @@
-function solve(array){
-    
-    let holder = {};
+const solve = (array) => {
+    const holder = {};
     for (const number of array) {
-        if(holder[number] === undefined){
+        if (holder[number] === undefined) {
             holder[number] = 0;
         }
         holder[number] += 1;
@@ -12,7 +11,7 @@ function solve(array){
     for (const key in holder) {
         if (holder.hasOwnProperty(key)) {
             const element = holder[key];
-            if(element > maxElement){
+            if (element > maxElement) {
                 maxElement = element;
                 maxKey = key;
             }
@@ -20,5 +19,5 @@ function solve(array){
     }
     console.log(maxElement);
     console.log(maxKey);
-}
-solve([4,1,1,4,2,3,4,4,1,2,4,9,3])
+};
+solve([4, 1, 1, 4, 2, 3, 4, 4, 1, 2, 4, 9, 3]);

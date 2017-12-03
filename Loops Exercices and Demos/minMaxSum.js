@@ -1,10 +1,8 @@
-function solve(args){
-    let array = +args;
+const solve = (n) => {
+    const array = +n;
 
-    let minSum = 0;
-    let maxSum = 0;
     let counter = 0;
-    while(counter <= 5){
+    while (counter <= 5) {
         let sum = 0;
         for (let i = 0; i < array.length; i++) {
             sum += array[i];
@@ -12,6 +10,6 @@ function solve(args){
         }
         counter++;
     }
-}
-    
-solve([1,2,3,4,5]);
+};
+
+solve([1, 2, 3, 4, 5]);

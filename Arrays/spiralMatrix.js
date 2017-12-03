@@ -1,62 +1,41 @@
-const n = 3;
-//fill the array with undefined
+/* eslint-disable */
+const n = 5;
 let matrix = [];
-for (let i = 0; i < n; i += 1) {
-    const row = Array.from({
-        length: n
-    });
 
-    matrix.push(row);
+for (let i = 0; i < n; i += 1) {
+    const row = Array.from({ lenght : n });
+    matrix.push(row);    
 }
-//get directions
-/*
-    0 -> right
-    1 -> down
-    2 -> left
-    3 -> up
-*/
 
 let dir = 0;
 let row = 0;
 let col = 0;
 
-let rowDirs = [0, +1, 0, -1];
-let colDirs = [+1, 0, -1, 0];
+let rowDir = [0, 1, 0 , -1];
+let colDir = [1, 0, -1, 0];
 
-for (let counter = 1; counter <= n * n; counter += 1) {
-    matrix[row][col] = counter;
-    let nextRow = row + rowDirs[dir];
-    let nextCol = col + colDirs[dir];
-
-    if (nextRow >= n || nextRow < 0 ||
-        nextCol >= n || nextCol < 0 ||
-        matrix[nextRow][nextCol] !== undefined) {
+for (let i = 1; i <= n * n; i++) {
+    if (row < n && row >= 0 && col < n && col >= 0 && matrix[row][col] === undefined){
+        matrix[row][col] = i;
+    }else{
+        row -= rowDir[dir];
+        col -= colDir[dir];
         dir += 1;
-        dir %= 4;
+        dir %= 4; 
+
+        i -= 1;
     }
-
-    row += rowDirs[dir];
-    col += colDirs[dir];
+    row += rowDir[dir];
+    col += colDir[dir];
+    
 }
-
-// for (let counter = 1; counter <= n * n; counter += 1) {
-//     if (row < n && row >= 0 &&
-//         col < n && col >= 0 &&
-//         matrix[row][col] === undefined) {
-//         matrix[row][col] = counter;
-//     } else {
-//         row -= rowDirs[dir];
-//         col -= colDirs[dir];
-//         dir += 1;
-//         dir %= 4;
-
-//         counter -= 1;
-//     }
-
-//     row += rowDirs[dir];
-//     col += colDirs[dir];
-// }
-
-for (const row of matrix) {
+for (const row of matrix) { 
     console.log(row);
 }
+
+/*
+ 1 2 3 
+ 8 9 4
+ 7 6 5
+ */
+/* eslint-enable */

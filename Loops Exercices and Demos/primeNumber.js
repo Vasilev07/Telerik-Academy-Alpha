@@ -1,14 +1,13 @@
-function solve(number){
-    return isPrime(number);
-
-    function isPrime(number){
-        let maxDivider = Math.sqrt(number);
+const solve = (n) => {
+    const isPrime = (x) => {
+        const maxDivider = Math.sqrt(x);
         for (let divider = 2; divider <= maxDivider; divider++) {
-            if(number % divider == 0){
+            if (x % divider === 0) {
                 return false;
             }
         }
         return true;
-    }
-}
+    };
+    return isPrime(n);
+};
 console.log(solve(7));
