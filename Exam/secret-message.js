@@ -9,12 +9,20 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    '4{a}2{xz}',
 ];
-
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+let exp = gets().split('');
+let stack = [];
+let finalStack = [];
+for (let i = 0; i < exp.length; i++) {
+    if (exp[i] === '{') {
+        stack.push(i);
+    }
+    if (exp[i] === '}') {
+        print(stack.push(exp.slice(stack.pop(), i + 1));
+    }
+}
+print(exp);

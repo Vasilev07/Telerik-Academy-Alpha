@@ -9,12 +9,18 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    '5 * (123 * (1 + 3) + ((4 - 3) / 6))',
 ];
-
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+const exp = gets();
+const stack = [];
+for (let i = 0; i < exp.length; i++) {
+    if (exp[i] === '(') {
+        stack.push(i);
+    }
+    if (exp[i] === ')') {
+        print(exp.slice(stack.pop(), i + 1));
+    }
+}

@@ -9,19 +9,21 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    5,
+    3,
+    '28 6 21 6 -7856 73 73 -56',
+    73,
 ];
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const num = +gets();
+const sizeOfArray = +gets();
+const array = gets().split(' ').map(Number);
+const number = +gets();
 
-const catalan = (num) => {
-    let res = 0;
-    if (num === 0) {
-        return 1;
+let counter = 0;
+for (let i = 0; i < array.length; i += 1) {
+    if (array[i] === number) {
+        counter += 1;
     }
-    res = (4 * num - 2) * catalan(num - 1) / (num + 1);
-    return res;
-};
-print(catalan(num))
+}
+print(counter);

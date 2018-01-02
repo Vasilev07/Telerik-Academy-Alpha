@@ -9,12 +9,20 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    '1 2 3',
 ];
 
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+const input = gets().split(' ').map(Number);
+let a = input[0];
+let b = input[1];
+let c = input[2];
+const getMax = (a, b) => {
+    if (a >= b) {
+        return a;
+    }
+    return b;
+};
+print(getMax(getMax(a, b), getMax(b, c)));

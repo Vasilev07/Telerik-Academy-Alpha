@@ -19,7 +19,7 @@ const n = +gets();
 const matrix = [];
 for (let i = 0; i < n; i += 1) {
     const row = Array.from({
-        lenght: n
+        lenght: n,
     });
     matrix.push(row);
 }

@@ -9,22 +9,33 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    10,
-    6,
+    8,
+    3,
+    3,
+    2,
+    3, -2,
+    5,
+    4,
+    7,
 ];
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
 const n = +gets();
-const k = +gets();
-const dist = n - k;
-let result2 = 1;
-let result = 1;
-for (let i = n; i > dist; i--) {
-    result *= i;
+let k = +gets();
+const arr = [];
+
+for (let i = 1; i < n; i++) {
+    arr.push(+gets());
 }
-for (let j = 1; j <= k; j++) {
-    result2 *= j;
+arr.sort((x, y) => {
+    return x - y;
+});
+
+let sum = 0;
+while (k > 0) {
+    const last = arr.pop();
+    sum += last;
+    k -= 1;
 }
-print(result / result2);
-// N! / (K! * (N - K)!)
+print(sum);

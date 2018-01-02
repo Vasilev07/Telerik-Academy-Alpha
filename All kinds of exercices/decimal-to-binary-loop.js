@@ -15,6 +15,14 @@ const test = [
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+let input = +gets();
+let result = '';
+let remainder = 0;
+
+do {
+    remainder = Math.floor(input % 2);
+    input = Math.floor(input / 2);
+    result = remainder.toString() + remainder;    
+} while (input > 0);
+
+print(result);

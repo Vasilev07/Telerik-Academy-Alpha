@@ -9,12 +9,16 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    100000,
 ];
-
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
+let n = +gets();
+let result = 0;
+let i = 5;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+while (n / i >= 1) {
+    result += Math.floor(n / i);
+    i *= 5;
+}
+print(result);

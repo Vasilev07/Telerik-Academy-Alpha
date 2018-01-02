@@ -9,22 +9,20 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    10,
-    6,
+    '2 4',
 ];
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const n = +gets();
-const k = +gets();
-const dist = n - k;
-let result2 = 1;
-let result = 1;
-for (let i = n; i > dist; i--) {
-    result *= i;
+const input = gets().split(' ').map(Number);
+const n = input[0];
+const m = input[1];
+
+const result = [];
+result.push(n);
+for (let i = 0; i < 20; i++) {
+    result.push(result[i] + 1);
+    result.push(2*result[i] + 1);
+    result.push(result[i] + 2);
 }
-for (let j = 1; j <= k; j++) {
-    result2 *= j;
-}
-print(result / result2);
-// N! / (K! * (N - K)!)
+print(result[m-1]);

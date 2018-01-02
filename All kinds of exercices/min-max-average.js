@@ -18,10 +18,10 @@ const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
 const mmsa = +gets();
-const array = [];
+const holder = [];
 for (let i = 0; i < mmsa; i += 1) {
     const currentLine = +gets();
-    array.push(currentLine);
+    holder.push(currentLine);
 }
 const maxMinSumAverage = (arr) => {
     const min = Math.min(...arr);
@@ -33,6 +33,6 @@ const maxMinSumAverage = (arr) => {
     print(`sum=${sum.toFixed(2)}`);
     print(`avg=${average.toFixed(2)}`);
 };
-maxMinSumAverage(array);
+maxMinSumAverage(holder);
 
 // submit AGGAIN!!!

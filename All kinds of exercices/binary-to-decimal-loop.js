@@ -9,12 +9,20 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    '1010',
 ];
 
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+const binary = gets();
+let decimal = 0;
+for (let i = binary.length - 1; i >= 0; i--) {
+    const lastElement = binary[binary.length - i - 1];
+    if (lastElement === '0') {
+        continue;
+    }
+
+    decimal += (2 ** i);
+}
+print(decimal);

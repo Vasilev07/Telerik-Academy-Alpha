@@ -7,20 +7,18 @@ const getGets = (arr) => {
         return toReturn;
     };
 };
-// this is the test
+
 const test = [
-    5,
-    2,
+    20,
 ];
+
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const n = +gets();
-const k = +gets();
-
+const number = +gets();
 
 const multiply = (a, b) => {
-    if ((a | 0) == 0 || (b | 0) == 0) {
+    if ((a | 0) === '0' || (b | 0) === '0') {
         return '0';
     }
 
@@ -44,7 +42,7 @@ const multiply = (a, b) => {
                 result[i + 1] = 0;
             }
 
-            result[i + 1] += parseInt(result[i] / 10);
+            result[i + 1] += parseInt(result[i] / 10, 0);
             result[i] %= 10;
         }
     }
@@ -52,8 +50,15 @@ const multiply = (a, b) => {
     return result.reverse().join('');
 };
 
-let result = '1';
-for (let index = n; index > k; index--) {
-    result = multiply(result, index.toString());
+if (number === 0 || number === 1) {
+    print(1);
+} else {
+    const factorial = (n) => {
+        let result = 1;
+        for (let i = 1; i <= n; i++) {
+            result = multiply(result.toString(), i.toString());
+        }
+        return result;
+    };
+    print(factorial(number));
 }
-print(result);

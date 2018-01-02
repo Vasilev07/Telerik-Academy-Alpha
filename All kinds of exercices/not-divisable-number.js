@@ -9,12 +9,17 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    10,
 ];
 
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+const n = +gets();
+let result = '';
+for (let index = 1; index <= n; index++) {
+    if (index % 3 !== 0 && index % 7 !== 0) {
+        result += index + ' ';
+    }
+}
+print(result);

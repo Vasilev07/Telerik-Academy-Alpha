@@ -9,38 +9,39 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    '3 3',
-    '4 3 5',
-    '2 6 4',
-    '8 2 7',
+    '5 5',
+    '1 1 3 3 5',
+    '-6 -7 2 -3 -1',
+    '3 0 -4 5 9',
+    '7 -7 0 1 0',
+    '-7 -6 -4 -4 9',
 ];
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
 const nu = gets().split(' ').map(Number);
-const matri = [];
+const matrix = [];
 for (let i = 0; i < nu[0]; i++) {
-    matri.push(gets().split(' ').map(Number));
+    matrix.push(gets().split(' ').map(Number));
 }
+let maxSum = Number.MIN_SAFE_INTEGER;
 
-
-const matrix = (n, m, matr) => {
-    let maxSum = 0;
-    let currentSum = 0;
-
-    for (let row = 0; row < n - 3 + 1; row += 1) {
-        for (let col = 0; col < m - 3 + 1; col += 1) {
-            for (let i = 0; i < 3; i += 1) {
-                for (let j = 0; j < 3; j += 1) {
-                    currentSum += matr[row + i][col + j];
-                }
-            }
-            if (maxSum < currentSum) {
-                maxSum = currentSum;
-            }
-            currentSum = 0;
+for (let row = 0; row < matrix.length - 2; row++) {
+    for (let col = 0; col < matrix[row].length - 2; col++) {
+        let currentSum = 0;
+        // row 0
+        currentSum += matrix[row][col] + matrix[row][col + 1] +
+            matrix[row][col + 2];
+        // row 1
+        currentSum += matrix[row + 1][col] + matrix[row + 1][col + 1] +
+            matrix[row + 1][col + 2];
+        // row 2
+        currentSum += matrix[row + 2][col] + matrix[row + 2][col + 1] +
+            matrix[row + 2][col + 2];
+        if (currentSum > maxSum) {
+            maxSum = currentSum;
         }
     }
-    print(maxSum);
-};
-matrix(nu[0], nu[1], matri);
+}
+
+print(maxSum);

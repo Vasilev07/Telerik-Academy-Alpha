@@ -9,12 +9,11 @@ const getGets = (arr) => {
 };
 // this is the test
 const test = [
-    28,
+    '123.45',
 ];
-
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const decimal = +gets();
-const binary = decimal.toString(2);
-print(binary);
+const numberAsString = gets();
+const holder = numberAsString.split('').reverse().join('');
+print(holder);
