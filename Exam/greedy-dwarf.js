@@ -1,29 +1,19 @@
 const getGets = (arr) => {
-
     let index = 0;
-
     return () => {
-
         const toReturn = arr[index];
-
         index += 1;
-
         return toReturn;
-
     };
-
 };
 
 const test = [
-
-    '3 3',
-    '10 10 0',
-    '10 10 10',
-    '10 10 10',
+    '2 3',
+    '0 5 2',
+    '2 5 3',
 ];
 
 const gets = this.gets || getGets(test);
-
 const print = this.print || console.log;
 
 const binary = gets().split(' ').map(Number);
@@ -42,88 +32,45 @@ for (let row = 0; row < N; row++) {
 }
 
 let coins = 0;
-const getBiggerNeighbour = (matrix, row, col) => {
-    while (true) {
-        let leftElement = 0;
-        let rightElement = 0;
-        let upElement = 0;
-        let downElement = 0;
-        if (col > 1) {
-            leftElement += matrix[row][col - 1];
-        }
-        if (col < matrix[row].length - 1) {
-            rightElement += matrix[row][col + 1];
-        }
-        if (row > 1) {
-            upElement += matrix[row - 1][col];
-        }
-        if (row < matrix.length - 1) {
-            downElement += matrix[row + 1][col];
-        }
-
-        if (leftElement === 0 && rightElement === 0 && upElement === 0 && downElement === 0) {
-            break;
-        }
-
-        if (leftElement >= rightElement && leftElement >= upElement && leftElement >= downElement) {
-            row += 0;
-            col -= 1;
-            matrix[row][col - 1] -= 1;
-            coins += 1;
-        }
-        if (rightElement > leftElement && rightElement >= upElement && rightElement >= downElement) {
-            row += 0;
-            col += 1;
-            matrix[row][col + 1] -= 1;
-            coins += 1;
-        }
-        if (upElement > leftElement && upElement > rightElement && upElement >= downElement) {
-            row -= 1;
-            col += 0;
-            matrix[row - 1][col] -= 1;
-            coins += 1;
-        }
-        if (downElement > leftElement && downElement > rightElement && downElement > upElement) {
-            row += 1;
-            col += 0;
-            matrix[row + 1][col] -= 1;
-            coins += 1;
-        }
+let [row, col] = start;
+let [r, c] = start;
+while (true) {
+    const current = matrix[row][col];
+    let leftElement = 0;
+    let rightElement = 0;
+    let upElement = 0;
+    let downElement = 0;
+    if (col - 1 > -1) {
+        leftElement = matrix[row][col - 1];
     }
-    return coins;
+    if (col + 1 < matrix[c].length) {
+        rightElement = matrix[row][col + 1];
+    }
+    if (row - 1 > -1) {
+        upElement += matrix[row - 1][col];
+    }
+    if (row + 1 < matrix.length) {
+        downElement += matrix[row + 1][col];
+    }
+    if (leftElement === 0 && rightElement === 0 && upElement === 0 && downElement === 0) {
+        break;
+    }
+    if (leftElement >= rightElement && leftElement >= upElement && leftElement >= downElement) {
+        matrix[row][col - 1] -= 1;
+        col--;
+        coins += 1;
+    } else if (rightElement > leftElement && rightElement >= upElement && rightElement >= downElement) {
+        matrix[row][col + 1] -= 1;
+        col++;
+        coins += 1;
+    } else if (upElement > leftElement && upElement > rightElement && upElement >= downElement) {
+        matrix[row - 1][col] -= 1;
+        row--;
+        coins += 1;
+    } else if (downElement > leftElement && downElement > rightElement && downElement > upElement) {
+        matrix[row + 1][col] -= 1;
+        row++;
+        coins += 1;
+    }
 }
-print(getBiggerNeighbour(matrix, start[0], start[1]));
-
-
-
-const getPivotIndex = (arr) => arr.length / 2 | 0;
-
-const quickSort = (arr) => {
-    if (arr.length < 2) {
-        return arr;
-    }
-    const currentPivotInex = getPivotIndex(arr);
-    const pivot = arr[currentPivotInex];
-    let left = [];
-    let right = [];
-
-    for (let i = 0; i < currentPivotInex; i++) {
-        if (arr[i] <= pivot) {
-            left.push(arr[i]);
-        } else {
-            right.push(arr[i]);
-        }
-    }
-
-    for (let i = currentPivotInex; i < arr.length; i++) {
-        if (arr[i] < pivot) {
-            left.push(arr[i]);
-        } else {
-            right.push(arr[i]);
-        }
-    }
-
-    left = quickSort(left);
-    right = quickSort(right);
-};
-console.log(quickSort([4, 7, 8, 1, 3, 2, 9]));
+print(coins);

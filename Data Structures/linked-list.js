@@ -8,68 +8,66 @@ class ListNode {
 
 class LinkedList {
     constructor() {
-        this.first = null;
-        this.last = null;
-        this.lenght = 0;
+        this._first = null;
+        this._last = null;
+        this._length = 0;
     }
 
+    get first() {
+        return this._first ? this._first.value : 'undefined';
+    }
+
+    get last() {
+        return this._last ? this._last.value : 'undefined';
+    }
 
     get length() {
-        return this.length;
+        return this._length;
     }
 
     append(...elements) {
-        // going through every element of the array -> elements
         elements.forEach(el => {
-            // create new ListNode of every forEached elemebt
             const newNode = new ListNode(el);
-            // if the list is empty
-            if (this.first === null) {
-                // create new first element
-                this.first = newNode;
-                //create last element which is equal to first element , next poin to null
-                this.last = newNode;
+            if (this._first === null) {
+                this._first = newNode;
+                this._last = newNode;
             } else {
-                // if the list is not empty
-                // reference the last element to List Node
-                this.last.next = newNode;
-                //last element get value and set List Node
-                this.last = newNode;
+                this._last.next = newNode;
+                this._last = newNode;
             }
         });
-        // adding the lenght of the array elements to the lenght of the LinkedList
-        this.lenght += elements.length;
-        // return the whole this which enables chaining
+
+        this._length += elements.length;
+
         return this;
     }
 
     prepend(...elements) {
-        // it's very important to reverse the array we get because of the problem we solve
         elements.reverse().forEach(el => {
             const newNode = new ListNode(el);
-            if (this.first === null) {
-                this.first = newNode;
-                this.last = newNode;
+            if (this._first === null) {
+                this._first = newNode;
+                this._last = newNode;
             } else {
-                newNode.next = this.first;
-                this.first = newNode;
+                newNode.next = this._first;
+                this._first = newNode;
             }
         });
 
-        this.lenght += elements.length;
+        this._length += elements.length;
 
         return this;
     }
 
     insert(index, ...elements) {
-        if (index < 0 || index > this.lenght) {
-            throw new Error('Invalid index');
+        if (index < 0 || index > this._length) {
+            throw new Error('Invalid index!');
         }
 
         if (index === 0) {
             return this.prepend(...elements);
-        } else if (index === this.lenght) {
-            return this.append(...elements);
+        } else if (index === this._length) {
+            return this.append(...elements)
         } else {
             let nodeToInsertAfter = this._nodeAtIndex(index - 1);
 
@@ -79,8 +77,10 @@ class LinkedList {
                 nodeToInsertAfter.next = newNode;
                 nodeToInsertAfter = newNode;
             });
-            this.lenght += elements.length;
+
+            this._length += elements.length;
         }
+
         return this;
     }
 
@@ -88,7 +88,7 @@ class LinkedList {
         this._validateIndex(index);
 
         let nodeToReturn = this._nodeAtIndex(index);
-        if (typeof value === 'undefined') {
+        if (typeof value !== 'undefined') {
             nodeToReturn.value = value;
         }
 
@@ -99,23 +99,28 @@ class LinkedList {
         this._validateIndex(index);
 
         if (index === 0) {
+            const result = this._first.value;
+            this._first = this._first.next;
 
-        }
-    }
+            if (this._length === 1) {
+                this._last = null;
+            }
 
-    //  do this to get the needed index 
-    _nodeAtIndex(index) {
-        let node = this._first;
-        for (let i = 0; i < index; i++) {
-            node = node.next;
-        }
+            this._length--;
 
-        return node;
-    }
+            return result;
+        } else {
+            let nodeToRemoveAfter = this._nodeAtIndex(index - 1);
+            const result = nodeToRemoveAfter.next.value;
+            nodeToRemoveAfter.next = nodeToRemoveAfter.next.next;
 
-    _validateIndex(index) {
-        if (index < 0 || index >= this.lenght) {
-            throw new Error('Invalid index');
+            if (index === this._length - 1) {
+                this._last = nodeToRemoveAfter;
+            }
+
+            this._length--;
+
+            return result;
         }
     }
 
@@ -135,6 +140,20 @@ class LinkedList {
         return this.toArray().join(' -> ');
     }
 
+    _validateIndex(index) {
+        if (index < 0 || index >= this._length) {
+            throw new Error('Invalid index!');
+        }
+    }
+
+    _nodeAtIndex(index) {
+        let node = this._first;
+        for (let i = 0; i < index; i++) {
+            node = node.next;
+        }
+
+        return node;
+    }
 }
 
 class Queue {
@@ -174,7 +193,4 @@ class Stack {
         return this._linkedList.length;
     }
 }
-const list = new LinkedList();
-list.append(4, 5, 6).prepend(1, 2, 3);
-console.log(list);
 /* eslint-enable */

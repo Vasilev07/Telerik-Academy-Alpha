@@ -1,37 +1,20 @@
 const getGets = (arr) => {
-
     let index = 0;
-
     return () => {
-
         const toReturn = arr[index];
-
         index += 1;
-
         return toReturn;
-
     };
-
 };
 
 const test = [
-
-    '5 6',
-
-    '1 3 2 2 2 4',
-
-    '3 3 3 2 4 4',
-
-    '4 3 1 2 3 3',
-
-    '4 3 1 3 3 1',
-
-    '4 3 3 3 1 1',
-
+    '3 3',
+    '10 10 10',
+    '10 0 10',
+    '10 10 10',
 ];
 
 const gets = this.gets || getGets(test);
-
 const print = this.print || console.log;
 
 const n = gets().split(' ').map(Number);
@@ -40,7 +23,7 @@ const N = n[0];
 const start = [];
 
 for (let row = 0; row < N; row++) {
-    const currentArray = matrix[row] = gets().split(' ').map(Number);
+    const currentArray = matrix[row] = gets().split(' ').map(Number);;
     for (let col = 0; col < currentArray.length; col++) {
         if (currentArray[col] === 0) {
             start.push(row);
@@ -72,7 +55,6 @@ const getBiggerNeighbour = (matrix, row, col) => {
     if (leftElement === 0 && rightElement === 0 && upElement === 0 && downElement === 0) {
         return;
     }
-
     if (leftElement >= rightElement && leftElement >= upElement && leftElement >= downElement) {
         getBiggerNeighbour(matrix, row, col - 1, matrix[row][col - 1] -= 1);
         coins += 1;
@@ -93,4 +75,3 @@ const getBiggerNeighbour = (matrix, row, col) => {
 }
 const finalCoins = getBiggerNeighbour(matrix, start[0], start[1]);
 print(finalCoins);
-quit(0)
