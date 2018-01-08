@@ -17,11 +17,11 @@ const print = this.print || console.log;
 const num = +gets();
 
 const catalan = (num) => {
-    let res = 0;
+    let result = 0;
     if (num === 0) {
         return 1;
     }
-    res = (4 * num - 2) * catalan(num - 1) / (num + 1);
-    return res;
+    result = (4 * num - 2) * catalan(num - 1) / (num + 1);
+    return result;
 };
 print(catalan(num))
