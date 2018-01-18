@@ -30,11 +30,11 @@ class Graph2 {
     }
 
     addDirectedEdge(x, y) {
-       if (typeof this.vertices[x] === 'undefined') {
-           this.vertices[x] = [];
-       }
+        if (typeof this.vertices[x] === 'undefined') {
+            this.vertices[x] = [];
+        }
 
-       this.vertices[x].push(y);
+        this.vertices[x].push(y);
     }
 }
 
@@ -51,9 +51,18 @@ class Graph3 {
     }
 
     addDirectedEdge(from, to) {
-        this.edges.push({ from, to });
+        this.edges.push({
+            from,
+            to,
+        });
     }
 }
-
+const graph = new Graph2();
+graph.addEdge('A', 'D');
+graph.addEdge('A', 'E');
+graph.addEdge('A', 'B');
+graph.addEdge('B', 'D');
+graph.addEdge('B', 'C');
+console.log(graph);
 
 

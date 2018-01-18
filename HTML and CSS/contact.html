@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="index.html">Profile</a>
+        </li>
+        <li>
+            <a href="friends.html">Friends</a>
+        </li>
+        <li>
+            <a href="contact.html" id="current">Contacts</a>
+        </li>
+        <li>
+            <a href="trailer.html">Trailer</a>
+        </li>
+        <li>
+            <div class="dropdown">
+                <a href="bases.html">Bases</a>
+                <div class="dropdown-content">
+                    <a href="#">Bat Cave</a>
+                    <a href="#">Justice League Tower</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <a href="drawBatman.html">DrawBatman</a>
+        </li>
+    </ul>
+    <div class="infoHolder">
+        <div>
+            <h1 class="profileText">Contact Batman</h1>
+        </div>
+    </div>
+    <fieldset>
+        <legend>Send Batman a message:</legend>
+        <div class='coll-div-form'>
+            <form class="input">
+                <label for="fname">First Name:</label>
+                <input type="text" id="fname" name="fname">
+                <label for="lname">Last Name:</label>
+                <input type="text" id="lname" name="lname">
+                <label for="lname">Email:</label>
+                <input type="text" id="lname" name="lname">
+            </form>
+            <p>Are you a friend?</p>
+            <form class="radio">
+                <label>
+                    <input id='testRadio' type="radio" name="gender" value="male" checked/>
+                    <span>Yes, of course</span>
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="female"> Female</input>
+                    <span>Yes, of course</span>
+                </label>
+                <label>
+                    <input type="radio" name="gender" value="other"> Other</input>
+                    <span>Yes, of course</span>
+                </label>
+            </form>
+        </div>
+        <!--
+        -->
+        <div class='coll-div-form ha'>
+            <label for="">Message:</label>
+            <textarea>Text</textarea>
+        </div>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</body>
+
+</html>
