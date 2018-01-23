@@ -11,7 +11,7 @@ const getGets = (arr) => {
 const test = [
     '123',
     '6',
-]
+];
 
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
@@ -55,3 +55,4 @@ const expectedResult = +gets();
 const result = expressionsCount(digits, expectedResult, 1, digits[0], 1, 0, false);
 print(result);
 /* eslint-enable */
+
