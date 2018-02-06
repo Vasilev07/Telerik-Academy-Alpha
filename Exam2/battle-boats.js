@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const getGets = (arr) => {
     let index = 0;
     return () => {
@@ -48,6 +50,7 @@ const firstPlayerMatrix = Array.from({
 const secondPlayerMatrix = Array.from({
     length: rows,
 });
+
 let firstPlayerRes = 0;
 let secondPlayerRes = 0;
 for (let col = 0; col < rows; col++) {
@@ -114,3 +117,5 @@ You already shot there!
 You already shot there!
 Booom
 6:6 */
+
+/* eslint-enable */

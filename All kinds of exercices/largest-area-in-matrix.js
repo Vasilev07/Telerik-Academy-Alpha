@@ -16,6 +16,7 @@ const test = [
 ];
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
+
 gets();
 const matrix = [];
 let line;
