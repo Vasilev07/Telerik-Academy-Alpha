@@ -23,51 +23,46 @@ class Graph {
     constructor(node) {
         this.vertices = [];
         this.countActions = {};
-
         for (let i = 0; i < node; i++) {
             this.vertices[i] = [];
             this.countActions[i] = 0;
         }
     }
-
     addEdge(x, y) {
         this.vertices[x].push(y);
         this.countActions[y] += 1;
     }
 
     sortGraph() {
-        const result = [];
         const holder = [];
-        let currentResult = 0;
-        for (const key in this.countActions) {
-            if (this.countActions[key] === 0) {
-                holder.push(key);
+        const result = [];
+        let current;
+
+        for (const action in this.countActions) {
+            if (this.countActions[action] === 0) {
+                holder.push(+action);
             }
         }
-        while (true) {
+
+        while (holder.length > 0) {
             holder.sort((a, b) => b - a);
-            currentResult = holder.pop();
-            result.push(currentResult);
-            this.vertices[currentResult].forEach((e) => {
+            current = holder.pop();
+            result.push(current);
+            this.vertices[current].forEach((e) => {
                 this.countActions[e] -= 1;
                 if (this.countActions[e] === 0) {
                     holder.push(e);
                 }
             });
-            
-            if (holder.length === 0) {
-                break;
-            }
+            this.vertices[current] = [];
         }
         return result;
     }
 }
-
 const [nodes, edges] = gets().split(' ').map(Number);
 const graph = new Graph(nodes);
 for (let i = 0; i < edges; i++) {
     const [x, y] = gets().split(' ').map(Number);
     graph.addEdge(x, y);
 }
-// print(graph.sortGraph().join('\n'));
-// print(graph.sortGraph().join('\n'));
+print(graph.sortGraph().join('\n'));

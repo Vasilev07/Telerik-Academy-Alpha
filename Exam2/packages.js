@@ -25,35 +25,45 @@ const test = [
 const gets = this.gets || getGets(test);
 const print = this.print || console.log;
 
-const getDependencies = (pack, graph, visited, dependencies) => {
-    visited.add(pack);
-    dependencies.push(pack);
+class Graph {
+    constructor(node) {
+        this.verticies = {};
+    }
 
-    const parents = graph.get(pack);
-    if (parents) {
-        parents.forEach((parent) => {
-            if (!visited.has(parent)) {
-                getDependencies(parent, graph, visited, dependencies);
+    addEdge(x, y) {
+        if (!this.verticies[y]) {
+            this.verticies[y] = [];
+        }
+        if (!this.verticies[x]) {
+            this.verticies[x] = [];
+        }
+        this.verticies[x].push(y);
+    }
+
+    dfs(vertex, visited, path) {
+        visited.add(vertex);
+        path.push(vertex);
+        this.verticies[vertex].forEach((v) => {
+            if (!visited.has(v)) {
+                this.dfs(v, visited, path);
             }
         });
     }
-};
+}
+
 
 const m = +gets();
-const graph = new Map();
+const graph = new Graph(m);
 for (let i = 0; i < m; i++) {
-    const [child, parent] = gets().split(' ').map(Number);
-    if (!graph.get(child)) {
-        graph.set(child, []);
-    }
-    graph.get(child).push(parent);
+    const [x, y] = gets().split(' ').map(Number);
+    graph.addEdge(x, y);
 }
 
 const k = +gets();
 for (let i = 0; i < k; i++) {
-    const pack = +gets();
+    const vertex = +gets();
     const visited = new Set();
-    const dependencies = [];
-    getDependencies(pack, graph, visited, dependencies);
-    print(dependencies.sort((a, b) => a - b).join(' '));
+    const path = [];
+    graph.dfs(vertex, visited, path);
+    print(path.sort((a, b) => a - b).join(' '));
 }

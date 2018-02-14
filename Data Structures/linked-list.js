@@ -193,4 +193,11 @@ class Stack {
         return this._linkedList.length;
     }
 }
+
+let list = new LinkedList();
+list.append(4, 5, 6);
+console.log(list);
+console.log('-'.repeat(20));
+list.prepend(1, 2, 3);
+console.log(list);
 /* eslint-enable */

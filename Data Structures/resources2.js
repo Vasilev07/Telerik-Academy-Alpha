@@ -87,4 +87,3 @@ for (let i = 0; i < nodes; i++) {
     graph.addEdge(x, y);
 }
 print(graph.sortGraph().join(' '));
-// print(graph.sortGraph().join('\n'));

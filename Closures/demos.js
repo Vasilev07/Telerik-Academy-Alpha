@@ -1,20 +1,19 @@
 /* eslint-disable */
 function Ninja() {
     var feints = 0;
-    // this is getter
     this.getFeints = function () {
-        return this.feints;
+        return feints;
     };
     this.feint = function () {
         feints++;
     };
 }
 var ninja1 = new Ninja();
-console.log(ninja1.feint()); 
-// feint method does not return anything, here we just increment feints variable
+ninja1.feint();
+ninja1.feint();
 console.log(ninja1.getFeints());
+// feint method does not return anything, here we just increment feints variable
 var ninja2 = new Ninja();
-console.log(ninja2.getFeints()); 
 // we haven incremented anything , that means we created two different functions with two different 
 //values of the variable feints
 /* eslint-enable */
