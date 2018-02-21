@@ -1,18 +1,26 @@
+const getGets = (arr) => {
+    let index = 0;
+
+    return () => {
+        const toReturn = arr[index];
+        index += 1;
+        return toReturn;
+    };
+};
+// this is the test
+const test = [
+    '6',
+    '3',
+];
+const gets = this.gets || getGets(test);
+const print = this.print || console.log;
+
 class Node {
     constructor(data) {
         this.data = data;
         this.prev = null;
         this.next = null;
     }
-
-    *[Symbol.iterator]() {
-        let node = this;
-        while (node !== null) {
-            yield node.data;
-            node = node.next;
-        }
-    }
-
     static disconnect(node) {
         if (node.next) {
             node.next.prev = null;

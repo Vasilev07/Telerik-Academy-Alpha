@@ -23,7 +23,7 @@ const N = n[0];
 const start = [];
 
 for (let row = 0; row < N; row++) {
-    const currentArray = matrix[row] = gets().split(' ').map(Number);;
+    const currentArray = matrix[row] = gets().split(' ').map(Number);
     for (let col = 0; col < currentArray.length; col++) {
         if (currentArray[col] === 0) {
             start.push(row);
