@@ -4,6 +4,7 @@ const quickSort = (arr) => {
     if (arr.length < 2) {
         return arr;
     }
+
     const currentPivotInex = getPivotIndex(arr);
     const pivot = arr[currentPivotInex];
     let left = [];

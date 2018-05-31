@@ -1,0 +1,17 @@
+extends ./_shared/master
+//- block content
+    //- ul
+    //-     each datail,key in superhero
+    //-         li
+    //-             | #{key}: #{datail}
+
+block content
+    h1
+        | #{superhero.name}
+    p
+        =superhero.secretIdentity
+    p
+        =superhero.AlignmentId  
+    p
+        =superhero.story
+    

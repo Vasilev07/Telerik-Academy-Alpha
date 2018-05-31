@@ -11,5 +11,5 @@ const selectionSort = (arr) => {
         }
     }
     return arr;
-}
+};
 console.log(selectionSort([10, 4, 6, 1, 2, 5]));

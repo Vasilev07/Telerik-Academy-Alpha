@@ -1,0 +1,18 @@
+<div [ngClass]="{bordered:false}">This is never bordered because of FALSE VALUE</div>
+<div [ngClass]="{bordered:true}">This is bordered because of TRUE VALUE</div>
+<div>---------------------------------------------------------------------</div>
+<div [ngClass]="{bordered: isBordered}">
+  Using object literal. Border {{ isBordered ? "ON" : "OFF" }}
+</div>
+<div>---------------------------------------------------------------------</div>
+<div [ngClass]="classesObj">
+  Using object var. Border {{ classesObj.bordered ? "ON" : "OFF" }}
+</div>
+<div>---------------------------------------------------------------------</div>
+<div class="base" [ngClass]="['blue', 'round']">
+  This will always have a blue background and round corners
+</div>
+<div>---------------------------------------------------------------------</div>
+<div class="base" [ngClass]="classList">
+  This is {{ classList.indexOf('blue') > -1 ? "" : "NOT" }} blue and {{ classList.indexOf('round') > -1 ? "" : "NOT" }} round
+</div>

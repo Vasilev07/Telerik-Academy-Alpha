@@ -1,0 +1,34 @@
+extends ./_shared/master 
+block content
+    div
+        form(action="/",method="POST")
+                div
+                    input(type="text", name="name", placeholder="Enter name...")
+                div
+                    input(type="password", name="secretIdentity", placeholder="Enter secret identity...")
+                
+                div
+                    each alignment, index in alignmentsInfo
+                        label
+                            if index === 0
+                                input(name="AlignmentId" type="radio" value=alignment.id checked)
+                            else
+                                input(name="AlignmentId" type="radio" value=alignment.id)
+                            span
+                                =alignment.name
+                
+                div
+                    each power in powersInfo
+                        label
+                            input(name="powerIdOrName", type="checkbox" value=power.id)
+                            span
+                                =power.name
+                    input.tb-new-power
+                div
+                    textarea(name="story")
+                div
+                    button.btn
+                        | Save
+                            
+
+                

@@ -1,9 +1,10 @@
+let neshto = 0;
 const merge = (left, right) => {
     let i = 0;
     let j = 0;
     const result = [];
     while (i < left.length && j < right.length) {
-        if (left[i] <= right[j]) {
+        if (left[i] < right[j]) {
             result.push(left[i]);
             i++;
         } else {
@@ -21,7 +22,7 @@ const merge = (left, right) => {
         result.push(right[j]);
         j++;
     }
-
+    neshto = neshto + i + j;
     return result;
 };
 
@@ -40,4 +41,5 @@ const mergeSort = (arr) => {
     return merge(left, right);
 };
 
-console.log(mergeSort([3, 1, 2, 4, 8, 7]));
+console.log(mergeSort([3, 1, 2, 2, 8, 7]));
+console.log(neshto);

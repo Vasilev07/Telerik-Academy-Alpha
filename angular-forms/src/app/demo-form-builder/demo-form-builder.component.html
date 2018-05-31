@@ -1,0 +1,9 @@
+<h2>ReactiveFroms Demo</h2>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+  <div *ngIf="!myForm.controls['sku'].valid">Invalid Form</div>
+  <label for="skuInput">Poduct2</label>
+  <input type="text" placeholder="product2" id="skuInput" [formControl]="myForm.controls['sku']">
+  <div *ngIf="!sku.valid" class="ui error message">SKU is invalid</div>
+  <div *ngIf="sku.hasError('required')" class="ui error message">SKU is required</div>
+  <button type="submit">Submit</button>
+</form>

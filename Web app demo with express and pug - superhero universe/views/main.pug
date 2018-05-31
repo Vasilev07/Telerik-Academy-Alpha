@@ -1,0 +1,7 @@
+extends ./_shared/master
+block content
+    ul
+        each hero in heroes
+            li
+                a(href="/superheroes/" + hero.id)
+                    | #{hero.name} 
