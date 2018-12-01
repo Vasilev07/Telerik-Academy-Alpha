@@ -1,0 +1,9 @@
+<h1>TEMPLATE DRIVEN FORM</h1>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" class="ui form">
+  <div class="field">
+    <label for="skuInput">SKU</label>
+    <input type="text" id="skuInput" placeholder="SKU" name="sku" ngModel>
+    <button type="submit">Submit</button>
+  </div>
+</form>
